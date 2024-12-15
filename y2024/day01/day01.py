@@ -72,8 +72,7 @@ def main():
     """
     list1, list2 = read_input("./input.txt")
     distance = compute_total_distance(list1, list2)
-    score = compute_similarity_score(list1, list2)
-    print(f"Distance: {distance}\nScore: {score}")
+    print(f"Distance: {distance}")
 
 if __name__ == "__main__":
     main()
