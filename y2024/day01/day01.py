@@ -3,6 +3,7 @@ Advent of Code 2024
 Day 1
 Sebastian Altomare
 """
+from collections import Counter
 
 def read_input(file_name):
     """
@@ -18,16 +19,14 @@ def read_input(file_name):
     """
     with open(file_name, "r", encoding="utf-8") as file:
         lines = file.readlines()
-    list1 = []
-    list2 = []
+    list1, list2 = [], []
     for line in lines:
-        data = line.split()
-        first, second = data
+        first, second = line.split()
         list1.append(int(first))
         list2.append(int(second))
     return list1, list2
 
-def compute_total_distance(list1, list2):
+def compute_total_distance(file_name):
     """
     Computes the distance between two lists and returns
     the result.
@@ -39,14 +38,12 @@ def compute_total_distance(list1, list2):
     Returns:
         (int): The distance between the two lists.
     """
+    list1, list2 = read_input(file_name)
     list1.sort()
     list2.sort()
-    distance = 0
-    for i, value in enumerate(list1):
-        distance += abs(value - list2[i])
-    return distance
+    return sum(abs(value - list2[i]) for i, value in enumerate(list1))
 
-def compute_similarity_score(list1, list2):
+def compute_similarity_score(file_name):
     """
     Computes the similarity between two lists and returns
     the result.
@@ -58,22 +55,6 @@ def compute_similarity_score(list1, list2):
     Returns:
         (int): The similarity of two lists.
     """
-    multiplicity_map = {}
-    similarity_score = 0
-    for value in list1:
-        multiplicity_map[value] = multiplicity_map.get(value, 0) + 1
-    for value in list2:
-        similarity_score += value * multiplicity_map.get(value, 0)
-    return similarity_score
-
-def main():
-    """
-    Main Method
-    """
-    list1, list2 = read_input("./input.txt")
-    distance = compute_total_distance(list1, list2)
-    score = compute_similarity_score(list1, list2)
-    print(f"Distance: {distance}\nScore: {score}")
-
-if __name__ == "__main__":
-    main()
+    list1, list2 = read_input(file_name)
+    multiplicity_map = Counter(list2)
+    return sum(value * multiplicity_map[value] for value in list1)
