@@ -5,7 +5,7 @@ Sebastian Altomare
 """
 from collections import Counter
 
-def read_input(file_name):
+def parse_input(file_name):
     """
     Reads input from a two-column text file and returns
     a column-based tuple of lists.
@@ -21,9 +21,9 @@ def read_input(file_name):
         lines = file.readlines()
     list1, list2 = [], []
     for line in lines:
-        first, second = line.split()
-        list1.append(int(first))
-        list2.append(int(second))
+        a, b = map(int, line.split())
+        list1.append(a)
+        list2.append(b)
     return list1, list2
 
 def compute_total_distance(file_name):
@@ -38,10 +38,8 @@ def compute_total_distance(file_name):
     Returns:
         (int): The distance between the two lists.
     """
-    list1, list2 = read_input(file_name)
-    list1.sort()
-    list2.sort()
-    return sum(abs(value - list2[i]) for i, value in enumerate(list1))
+    list1, list2 = parse_input(file_name)
+    return sum(abs(a - b) for a, b in zip(sorted(list1), sorted(list2)))
 
 def compute_similarity_score(file_name):
     """
@@ -55,6 +53,6 @@ def compute_similarity_score(file_name):
     Returns:
         (int): The similarity of two lists.
     """
-    list1, list2 = read_input(file_name)
+    list1, list2 = parse_input(file_name)
     multiplicity_map = Counter(list2)
-    return sum(value * multiplicity_map[value] for value in list1)
+    return sum(value * multiplicity_map.get(value, 0) for value in list1)
