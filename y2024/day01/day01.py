@@ -1,6 +1,6 @@
 """
 Advent of Code 2024
-Day 1
+Day 01
 Sebastian Altomare
 """
 from collections import Counter
