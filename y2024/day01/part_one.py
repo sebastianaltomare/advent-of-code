@@ -6,7 +6,7 @@ Sebastian Altomare
 Part One
 """
 
-import parse_input
+from parse_input import parse_input
 
 def compute_total_distance(file_name):
     """

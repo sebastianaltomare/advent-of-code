@@ -6,7 +6,7 @@ Sebastian Altomare
 Part Two
 """
 
-import parse_input
+from parse_input import parse_input
 from collections import Counter
 
 def compute_similarity_score(file_name):
