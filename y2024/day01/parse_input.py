@@ -12,7 +12,7 @@ def parse_input(file_name):
     a column-based tuple of lists.
     
     Args:
-        file_name (str): The name of the file to be read.
+        file_name (str): The name or path of the file to be read.
     
     Returns:
         Tuple(List[str], List[str]): A tuple containing a list of

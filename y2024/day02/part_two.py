@@ -13,7 +13,7 @@ def count_dampened_safe(file_name):
     Count the number of dampened safe reports in a file.
     
     Args:
-        file_name (str): The name of the file to be read.
+        file_name (str): The name or path of the file to be read.
         
     Returns:
         (int): the number of dampened safe reports in a file.

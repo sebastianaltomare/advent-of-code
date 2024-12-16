@@ -12,7 +12,7 @@ def parse_input(file_name):
     of integer lists.
 
     Args:
-        file_name (str): The name of the file to read.
+        file_name (str): The name or path of the file to be read.
 
     Returns:
         List[List[int]]: A list of integer lists.
@@ -20,11 +20,11 @@ def parse_input(file_name):
     try:
         with open(file_name, "r", encoding="utf-8") as file:
             return [parse_report(line) for line in file if line.strip()]
-    except FileNotFoundError:
-        raise FileNotFoundError(f"File {file_name} not found.")
+    except FileNotFoundError as exc:
+        raise FileNotFoundError(f"File {file_name} not found.") from exc
     except ValueError as error:
-        raise ValueError(f"Error parsing {error}")
-    
+        raise ValueError(f"Error parsing {error}") from error
+
 def parse_report(line):
     """
     Converts a string of integer values into a list of integers.
@@ -37,5 +37,5 @@ def parse_report(line):
     """
     try:
         return [int(value) for value in line.split()]
-    except ValueError:
-        raise ValueError(f"Invalid data")
+    except ValueError as exc:
+        raise ValueError("Invalid data") from exc
