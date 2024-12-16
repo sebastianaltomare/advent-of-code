@@ -19,4 +19,4 @@ def count_safe(file_name):
         int: The number of safe reports in a file.
     """
     puzzle = parse_input(file_name)
-    return sum(1 for report in puzzle if is_safe(report))
+    return sum(is_safe(report) for report in puzzle)
