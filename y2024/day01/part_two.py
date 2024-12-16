@@ -19,7 +19,7 @@ def compute_similarity_score(file_name):
         list2 (List[str]): The second list.
     
     Returns:
-        (int): The similarity of two lists.
+        int: The similarity of two lists.
     """
     list1, list2 = parse_input(file_name)
     multiplicity_map = Counter(list2)

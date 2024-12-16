@@ -18,7 +18,7 @@ def compute_total_distance(file_name):
         list2 (List[str]): The second list.
     
     Returns:
-        (int): The distance between the two lists.
+        int: The distance between the two lists.
     """
     list1, list2 = parse_input(file_name)
     return sum(abs(a - b) for a, b in zip(sorted(list1), sorted(list2)))

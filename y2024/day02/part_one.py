@@ -7,7 +7,6 @@ Part One
 """
 from parse_input import parse_input
 from safe import is_safe
-from part_two import count_safe_helper
 
 def count_safe(file_name):
     """
@@ -17,7 +16,7 @@ def count_safe(file_name):
         file_name (str): The name of the file to be read.
         
     Returns:
-        (int): the number of safe reports in a file.
+        int: The number of safe reports in a file.
     """
     puzzle = parse_input(file_name)
-    return count_safe_helper(puzzle)
+    return sum(1 for report in puzzle if is_safe(report))

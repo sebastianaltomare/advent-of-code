@@ -15,7 +15,7 @@ def parse_input(file_name):
         file_name (str): The name of the file to be read.
     
     Returns:
-        (Tuple(List[str], List[str])): A tuple containing a list of
+        Tuple(List[str], List[str]): A tuple containing a list of
             each column.
     """
     with open(file_name, "r", encoding="utf-8") as file:

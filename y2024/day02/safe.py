@@ -6,33 +6,6 @@ Sebastian Altomare
 Safe
 """
 
-def is_level_ordered(rep):
-    """
-    Checks if a level is ordered.
-    
-    Args:
-        rep (List[int]): a list of integers representing a level.
-        
-    Returns:
-        (bool): True if ordered, False otherwise.
-    """
-    return (
-        len(set(rep)) == len(rep) and
-        rep == sorted(rep) or rep == sorted(rep, reverse=True)
-    )
-
-def correct_range(rep):
-    """
-    Checks if a level has correct ranges.
-    
-    Args:
-        rep (List[int]): a list of integers representing a level.
-        
-    Returns:
-        (bool): True if has correct ranges, False otherwise.
-    """
-    return all(1 <= abs(rep[i] - rep[i + 1]) <= 3 for i in range(len(rep) - 1))
-
 def is_safe(rep):
     """
     Checks if a level is safe.
@@ -43,4 +16,18 @@ def is_safe(rep):
     Returns:
         (bool): True if safe, False otherwise.
     """
-    return is_level_ordered(rep) and correct_range(rep)
+    pos, neg = {1, 2, 3}, {-1, -2, -3}
+    differences = {rep[i + 1] - rep[i] for i in range(len(rep) - 1)}
+    return differences <= pos or differences <= neg
+
+def is_dampened_safe(rep):
+    """
+    Checks if a level is safe with one element removed.
+    
+    Args:
+        rep (List[int]): a list of integers representing a level.
+    
+    Returns:
+        (bool): True if safe, False otherwise.
+    """
+    return any(is_safe(rep[:i] + rep[i+1:]) for i, _ in enumerate(rep))
