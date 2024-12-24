@@ -1,5 +1,5 @@
 """
-Advent of Code
+Advent of Code 2024
 Day 07
 Sebastian Altomare
 
