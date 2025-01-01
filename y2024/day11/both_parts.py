@@ -3,7 +3,7 @@ Advent of Code 2024
 Day 11
 Sebastian Altomare
 
-Part One
+Both Parts
 """
 from collections import Counter
 from parse_input import parse_input
